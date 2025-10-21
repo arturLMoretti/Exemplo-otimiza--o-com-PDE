@@ -1,353 +1,230 @@
-# 🔬 Exemplo de Otimização com PDE - Adsorção em Partícula Esférica
+# 🧪 Otimização de Parâmetros com PDE - Modelo de Adsorção
 
-Este projeto demonstra técnicas avançadas de **otimização de parâmetros** envolvendo a solução de **Equações Diferenciais Parciais (PDE)** para processos de adsorção, implementado em C++ moderno.
+Este projeto implementa um sistema completo de **otimização de parâmetros** para modelos matemáticos baseados em **Equações Diferenciais Parciais (PDE)**, especificamente para processos de **adsorção em partículas esféricas**.
 
-## 🎯 Objetivo
+## 🎯 Características Principais
 
-**Otimizar parâmetros** de um modelo de adsorção em partícula esférica com isoterma de Langmuir através da comparação com dados experimentais.
+- **Modelo Matemático Rigoroso**: Difusão em geometria esférica com isoterma de Langmuir
+- **Otimização Automática**: Algoritmo Nelder-Mead para estimação de parâmetros
+- **Visualização Científica**: Gráficos de alta qualidade para publicação
+- **Relatórios Técnicos**: Geração automática de documentos LaTeX/PDF
+- **Análise Estatística Completa**: Métricas abrangentes de ajuste do modelo
 
-## 📋 Fundamentação Matemática
+## 📊 Visualizações Implementadas
 
-### **Equação Governante (PDE)**:
-```
-∂C/∂t = D_eff/r² ∂/∂r(r² ∂C/∂r) - ρ_p ∂q/∂t
-```
+### 📈 Gráficos de Comparação
+- **Evolução temporal**: Experimental vs Simulado
+- **Gráfico de paridade**: Correlação 1:1 com bandas de confiança
+- **Análise de resíduos**: Distribuição e tendências dos erros
+- **Estatísticas integradas**: R², RMSE, MAE, MAPE no próprio gráfico
 
-### **Isoterma de Langmuir**:
-```
-q = q_max × k_L × C / (1 + k_L × C)
-```
+### 🔬 Análises Avançadas
+- **Perfis 3D**: Evolução espacial e temporal da concentração
+- **Análise de sensibilidade**: Efeito dos parâmetros na resposta
+- **Comparação de mecanismos**: Diferentes fenômenos de transferência
+- **Isotermas de adsorção**: Comparação entre modelos (Langmuir, Freundlich, Linear)
 
-### **Condições de Contorno**:
-- **Centro**: ∂C/∂r = 0 (simetria esférica)
-- **Superfície**: -D_eff ∂C/∂r = k_f(C_ext - C_surf) (transferência de massa externa)
+### 📄 Relatórios Técnicos
+- **Formato LaTeX/PDF**: Pronto para publicação científica
+- **Estatísticas detalhadas**: Análise completa dos resultados
+- **Interpretação automática**: Avaliação da qualidade do ajuste
+- **Referências bibliográficas**: Incluídas automaticamente
 
-### **Parâmetros Físicos**:
-- **D_eff**: Difusividade efetiva (m²/s)
-- **k_L**: Constante de equilíbrio de Langmuir (m³/kg)
-- **q_max**: Capacidade máxima de adsorção (kg/kg)
-- **k_f**: Coeficiente de transferência de massa externa (m/s)
-- **R**: Raio da partícula (m)
-- **ρ_p**: Densidade da partícula (kg/m³)
+## 🚀 Instalação e Uso
 
-## 📁 Estrutura dos Arquivos
+### Instalação Automática (Recomendado)
 
-### 🎯 **Códigos Principais**
-
-#### `exemplo_adsorcao.cpp` - **Modelo Completo**
-- Solução completa da PDE em coordenadas esféricas
-- Diferenças finitas implícitas com sistema tridiagonal
-- Otimização usando algoritmo Nelder-Mead
-- Transferência de massa externa e difusão interna
-
-#### `exemplo_adsorcao_simples.cpp` - **Modelo Simplificado**
-- Modelo cinético de pseudo-segunda ordem
-- Otimização por busca em grade (grid search)
-- Mais rápido e educativo para demonstrações
-
-### 🔧 **Arquivos de Suporte**
-
-#### `adsorption_optimization.h` - Header
-- Estruturas de dados (AdsorptionParams, SimulationResult, etc.)
-- Declaração da classe AdsorptionOptimizer
-- Interfaces para simulação e otimização
-
-#### `adsorption_optimization.cpp` - Implementação
-- Solução numérica da PDE
-- Algoritmos de otimização
-- Funções utilitárias e de I/O
-
-#### `Makefile` - Automação de Compilação
-- Compilação automatizada com `make all`
-- Comandos para limpeza: `make clean`
-- Execução rápida: `make run-simples`
-- Ajuda: `make help`
-
-#### `config.ini` - Configuração
-- Parâmetros padrão documentados
-- Referência para valores físicos típicos
-- Configurações de visualização
-- Comentários explicativos
-
-#### `README.md` - Documentação Completa
-- Este arquivo com teoria, implementação e uso
-
-## � Dependências e Requisitos
-
-### **Compilador**:
-- GCC/Clang com suporte **C++17** ou superior
-- Bibliotecas matemáticas padrão (libm)
-
-### **Sistema Operacional**:
-- Linux (testado em Ubuntu/Debian)
-- macOS (com Xcode Command Line Tools)
-- Windows (com MinGW ou WSL)
-
-### **Bibliotecas**:
-- STL (Standard Template Library) - incluída no C++17
-- Bibliotecas matemáticas padrão (`<cmath>`, `<algorithm>`, `<numeric>`)
-
-### **Ferramentas Opcionais**:
-- **Python/Matplotlib**: Para visualização dos resultados CSV
-- **Gnuplot**: Para plotagem direta dos dados
-- **Excel/LibreOffice**: Para análise dos arquivos CSV
-
-## 🚀 Como Compilar e Executar
-
-### **Modelo Completo** (PDE + Otimização Nelder-Mead):
 ```bash
-g++ -std=c++17 -O2 -o exemplo_adsorcao exemplo_adsorcao.cpp adsorption_optimization.cpp -lm
-./exemplo_adsorcao
+# Clone ou baixe o projeto
+cd "Exemplo otimização com PDE"
+
+# Execute o script de configuração
+./setup.sh
+
+# Ou execute análise completa diretamente
+./run_analysis.sh
 ```
 
-### **Modelo Simplificado** (Cinético + Grid Search):
+### Instalação Manual
+
 ```bash
-g++ -std=c++17 -O2 -o exemplo_adsorcao_simples exemplo_adsorcao_simples.cpp -lm
-./exemplo_adsorcao_simples
+# 1. Instalar dependências Python
+pip3 install -r requirements.txt
+
+# 2. Compilar o projeto
+make install-deps
+make all
+
+# 3. Executar análise
+make full-analysis
 ```
 
-### **Comandos de Limpeza**:
-```bash
-# Remover executáveis
-rm -f exemplo_adsorcao exemplo_adsorcao_simples
+## 📋 Comandos Disponíveis
 
-# Remover arquivos de dados (opcional)
-rm -f *.csv
+### 🔧 Configuração
+```bash
+make install-deps      # Instala todas as dependências
+make setup-python      # Configura apenas ambiente Python
+```
+
+### ⚙️ Compilação
+```bash
+make all               # Compila ambos os modelos
+make completo          # Modelo completo (PDE + Nelder-Mead)
+make simples           # Modelo simplificado
+```
+
+### 🚀 Execução
+```bash
+make run-completo      # Compila e executa modelo completo
+make run-with-plots    # Execução + plotagem automática
+make full-analysis     # Análise completa (simulação + plots + relatório)
+./run_analysis.sh      # Script de execução rápida
+```
+
+### 📊 Visualização
+```bash
+make plot              # Gráficos de comparação básicos
+make plot-advanced     # Visualizações avançadas (3D, sensibilidade)
+make plot-custom       # Plotagem personalizada completa
+make report            # Relatório técnico em LaTeX/PDF
+```
+
+### 🧹 Limpeza
+```bash
+make clean             # Remove executáveis
+make clean-all         # Remove executáveis e dados CSV
+make clean-plots       # Remove apenas gráficos gerados
+```
+
+## 🔬 Estrutura do Projeto
+
+```
+📁 Exemplo otimização com PDE/
+├── 🔧 Código Principal
+│   ├── exemplo_adsorcao.cpp          # Implementação principal
+│   ├── adsorption_optimization.h     # Headers do modelo
+│   └── adsorption_optimization.cpp   # Implementação da otimização
+│
+├── 🎨 Visualização e Relatórios
+│   ├── plot_results.py               # Gráficos de comparação
+│   ├── plot_advanced.py              # Visualizações avançadas
+│   ├── generate_report.py            # Relatórios técnicos
+│   └── requirements.txt              # Dependências Python
+│
+├── ⚙️ Configuração e Build
+│   ├── Makefile                      # Sistema de build
+│   ├── setup.sh                      # Script de configuração
+│   ├── run_analysis.sh               # Execução rápida
+│   └── config.ini                    # Configurações
+│
+└── 📚 Documentação
+    ├── README.md                     # Este arquivo
+    └── test.sh                       # Testes
+```
+
+## 📈 Exemplo de Uso
+
+```bash
+# 1. Configuração inicial (uma vez)
+./setup.sh
+
+# 2. Análise completa
+./run_analysis.sh
+
+# 3. Ou passo a passo:
+make completo                    # Compilar
+./exemplo_adsorcao              # Executar simulação
+python3 plot_results.py --all-plots    # Gerar gráficos
+python3 generate_report.py     # Gerar relatório
 ```
 
 ## 📊 Arquivos de Saída
 
-### **Dados Experimentais**
-- `dados_experimentais.csv` - Dados sintéticos com ruído (modelo completo)
-- `dados_experimentais_simples.csv` - Dados sintéticos (modelo simplificado)
-
-### **Simulações**
+### Dados de Simulação
+- `dados_experimentais.csv` - Dados experimentais sintéticos
 - `simulacao_inicial.csv` - Resultados com parâmetros iniciais
-- `simulacao_otimizada.csv` - Resultados após otimização
-- `simulacao_inicial_simples.csv` - Versão simplificada (inicial)
-- `simulacao_otimizada_simples.csv` - Versão simplificada (otimizada)
+- `simulacao_otimizada.csv` - Resultados otimizados
+- `comparacao_resultados.csv` - Comparação experimental vs simulado
 
-### **Comparações**
-- `comparacao_resultados.csv` - Experimental vs simulado (modelo completo)
-- `comparacao_simples.csv` - Experimental vs simulado (modelo simplificado)
+### Visualizações
+- `resultado_comparacao.png` - Comparação temporal e paridade
+- `resultado_analise_detalhada.png` - Análise detalhada dos erros
+- `avancado_perfil_3d.png` - Perfil 3D de concentração
+- `avancado_sensibilidade.png` - Análise de sensibilidade
+- `avancado_mecanismos.png` - Comparação de mecanismos
+- `avancado_isotermas.png` - Comparação de isotermas
 
-## 📈 Análise de Resultados
+### Relatórios
+- `relatorio_tecnico.tex` - Relatório em LaTeX
+- `relatorio_tecnico.pdf` - Relatório em PDF (se LaTeX disponível)
 
-Os programas geram dados em formato CSV que podem ser analisados em diversas ferramentas:
+## 🔬 Modelo Matemático
 
-### **Python/Matplotlib**:
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
+O sistema resolve a seguinte PDE para difusão em partículas esféricas:
 
-# Carregar dados de comparação
-data = pd.read_csv('comparacao_simples.csv', comment='#')
-
-# Plotar experimental vs simulado
-plt.figure(figsize=(10, 6))
-plt.plot(data.iloc[:,0], data.iloc[:,1], 'o', label='Experimental', markersize=8)
-plt.plot(data.iloc[:,0], data.iloc[:,2], '--', label='Inicial', linewidth=2)
-plt.plot(data.iloc[:,0], data.iloc[:,3], '-', label='Otimizado', linewidth=2)
-plt.xlabel('Tempo (s)')
-plt.ylabel('Uptake (mg/g)')
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.title('Comparação: Experimental vs Simulado')
-plt.show()
+```
+∂C/∂t = D_eff (∂²C/∂r² + 2/r ∂C/∂r) - ρ_p(1-ε) ∂q/∂t
 ```
 
-### **Gnuplot**:
-```bash
-gnuplot -persist -e "
-set datafile separator ',';
-set xlabel 'Tempo (s)';
-set ylabel 'Uptake (mg/g)';
-set title 'Otimização de Adsorção';
-plot 'comparacao_simples.csv' using 1:2 with points title 'Experimental', \
-     '' using 1:4 with lines title 'Otimizado'
-"
+Com isoterma de Langmuir:
+```
+q = (q_max × k_L × C) / (1 + k_L × C)
 ```
 
-### **Excel/LibreOffice**:
-1. Abrir arquivos `.csv` diretamente
-2. Usar delimitador vírgula
-3. Criar gráficos de linha/dispersão
-4. Calcular estatísticas (R², RMSE, etc.)
+### Parâmetros Otimizados
+- `D_eff` - Difusividade efetiva [m²/s]
+- `k_L` - Constante de Langmuir [m³/kg]
+- `q_max` - Capacidade máxima de adsorção [kg/kg]
+- `k_f` - Coeficiente de transferência externa [m/s]
 
-## 🎯 Parâmetros Otimizados
+## 📊 Métricas de Avaliação
 
-### **Modelo Completo** (PDE):
-- **D_eff**: Difusividade efetiva (m²/s)
-- **k_L**: Constante de Langmuir (m³/kg)  
-- **q_max**: Capacidade máxima de adsorção (kg/kg)
-- **k_f**: Coeficiente de transferência de massa externa (m/s)
+- **R²** - Coeficiente de determinação
+- **RMSE** - Erro quadrático médio
+- **MAE** - Erro absoluto médio
+- **MAPE** - Erro percentual médio
+- **Análise de resíduos** - Distribuição e tendências
 
-### **Modelo Simplificado** (Cinético):
-- **k1**: Constante de velocidade de adsorção (1/s)
-- **k2**: Constante de velocidade de dessorção (1/s)
-- **D_eff**: Difusividade efetiva (m²/s)
-- **q_max**: Capacidade máxima (mg/g)
+## 🛠️ Dependências
 
-## 📈 Resultados Típicos
+### Sistema
+- **C++17** - Compilador g++ ou clang++
+- **Python 3.8+** - Para visualização e relatórios
+- **LaTeX** (opcional) - Para geração de PDFs
 
-### Performance da Otimização:
-- **Erro inicial**: ~47 mg/g
-- **Erro final**: ~2 mg/g
-- **Melhoria**: 95%+
-- **Convergência**: 5-20 iterações
+### Bibliotecas Python
+- **numpy** - Computação numérica
+- **pandas** - Manipulação de dados
+- **matplotlib** - Gráficos básicos
+- **seaborn** - Gráficos estatísticos
+- **scipy** (opcional) - Funções científicas
 
-### Precisão Numérica:
-- **Estabilidade**: Método implícito garante estabilidade
-- **Precisão**: Erro relativo < 1%
-- **Eficiência**: Tempo de execução < 10 segundos
+## 🎯 Casos de Uso
 
-## � Conceitos Implementados
+1. **Pesquisa Acadêmica**: Otimização de parâmetros para estudos de adsorção
+2. **Engenharia de Processos**: Design e otimização de sistemas de separação
+3. **Validação de Modelos**: Comparação entre diferentes formulações matemáticas
+4. **Ensino**: Demonstração de métodos numéricos e otimização
 
-### **Métodos Numéricos**:
-- ✅ **Diferenças finitas implícitas** para estabilidade
-- ✅ **Coordenadas esféricas** (r, θ, φ)
-- ✅ **Sistema tridiagonal** (algoritmo de Thomas)
-- ✅ **Integração temporal** adaptativa
-- ✅ **Interpolação linear** para comparações
+## 🤝 Contribuição
 
-### **Algoritmos de Otimização**:
-- ✅ **Nelder-Mead Simplex** (método livre de gradientes)
-- ✅ **Grid Search** (busca exaustiva em grade)
-- ✅ **Função objetivo RMSE** (Root Mean Square Error)
-- ✅ **Restrições de limites** nos parâmetros
-- ✅ **Convergência robusta** com critérios múltiplos
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-### **Física e Química**:
-- ✅ **Isoterma de Langmuir** (adsorção monocamada)
-- ✅ **Difusão em meios porosos** (Lei de Fick modificada)
-- ✅ **Transferência de massa externa** (resistência do filme)
-- ✅ **Cinética de adsorção** (pseudo-primeira e segunda ordem)
-- ✅ **Balanço de massa** em coordenadas esféricas
+## 📝 Licença
 
-### **Programação Avançada**:
-- ✅ **C++17 moderno** (structured bindings, auto, etc.)
-- ✅ **Orientação a objetos** (classes, encapsulamento)
-- ✅ **Programação genérica** (templates, STL)
-- ✅ **Gerenciamento de memória** seguro
-- ✅ **Modularidade** e reutilização de código
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
 
-## 🔬 Métodos Numéricos Detalhados
+## 📚 Referências
 
-### **Solução da PDE**:
-- **Discretização espacial**: Diferenças finitas centradas
-- **Discretização temporal**: Esquema implícito (backward Euler)
-- **Sistema linear**: Matriz tridiagonal resolvida por Thomas
-- **Condições de contorno**: Robin (superfície) e Neumann (centro)
-- **Estabilidade**: Incondicionalmente estável (método implícito)
-
-### **Algoritmos de Otimização**:
-- **Nelder-Mead**: Busca direta no espaço de parâmetros
-- **Grid Search**: Avaliação sistemática em grade regular
-- **Função objetivo**: Minimização do erro quadrático médio
-- **Convergência**: Critérios baseados em tolerância relativa
-
-## 🧪 Aplicações Práticas
-
-### **Engenharia Química**:
-- Projeto de colunas de adsorção
-- Otimização de processos de purificação
-- Dimensionamento de leitos fixos
-- Caracterização de adsorventes
-
-### **Engenharia Ambiental**:
-- Tratamento de águas residuárias
-- Remoção de contaminantes
-- Purificação de gases
-- Processos de descontaminação
-
-### **Ciência de Materiais**:
-- Caracterização de porosidade
-- Determinação de propriedades de transporte
-- Estudo de cinética de adsorção
-- Desenvolvimento de novos adsorventes
-
-## 📚 Conceitos Físicos
-
-### **Transferência de Massa**:
-- Difusão molecular em poros
-- Resistência externa (filme líquido)
-- Resistência interna (difusão nos poros)
-- Equilíbrio termodinâmico (isoterma)
-
-### **Fenômenos de Superfície**:
-- Adsorção física (fisissorção)
-- Isoterma de Langmuir
-- Capacidade de saturação
-- Cinética de adsorção/dessorção
-
-## 🎓 Valor Educacional
-
-Este exemplo demonstra:
-- **Modelagem matemática** de processos físicos
-- **Métodos numéricos** para PDEs
-- **Algoritmos de otimização** global
-- **Programação científica** em C++
-- **Análise de dados** experimentais
-- **Validação de modelos** matemáticos
-
-## 📝 Notas Técnicas
-
-### **Limitações**:
-- Assume partículas esféricas uniformes
-- Isoterma de Langmuir (monocamada)
-- Propriedades constantes
-- Sem reações químicas
-
-### **Extensões Possíveis**:
-- Isotermas multicamadas (BET, Freundlich)
-- Geometrias não-esféricas
-- Sistemas multicomponentes
-- Reações simultâneas
+1. **Ruthven, D.M.** - *Principles of Adsorption and Adsorption Processes*. Wiley, 1984.
+2. **Tien, C.** - *Adsorption Calculations and Modeling*. Butterworth-Heinemann, 1994.
+3. **Nelder, J.A., Mead, R.** - A simplex method for function minimization. *Computer Journal*, 7, 308-313, 1965.
 
 ---
 
-## 🎓 Valor Educacional e Aplicações
-
-### **Para Estudantes**:
-- **Modelagem matemática** de processos físicos reais
-- **Implementação prática** de métodos numéricos avançados
-- **Otimização global** sem derivadas
-- **Programação científica** em C++ moderno
-- **Análise e validação** de resultados numéricos
-
-### **Para Engenheiros**:
-- **Caracterização de materiais** adsorventes
-- **Projeto de processos** de separação
-- **Otimização de parâmetros** operacionais
-- **Análise de dados experimentais**
-- **Modelagem preditiva** de sistemas
-
-### **Para Pesquisadores**:
-- **Desenvolvimento de modelos** matemáticos
-- **Implementação de algoritmos** de otimização
-- **Análise de sensibilidade** paramétrica
-- **Validação experimental** de teorias
-- **Publicação científica** com dados robustos
-
-## 🌟 Características Destacadas
-
-- ✅ **Código autocontido**: Todas as dependências incluídas
-- ✅ **Documentação completa**: Teoria + implementação + uso
-- ✅ **Exemplos práticos**: Problemas reais de engenharia
-- ✅ **Performance otimizada**: Compilação com `-O2`
-- ✅ **Portabilidade**: Funciona em múltiplas plataformas
-- ✅ **Modularidade**: Código reutilizável e extensível
-- ✅ **Robustez**: Tratamento de erros e casos extremos
-
-## 📞 Informações Técnicas
-
-**Desenvolvido para**: Demonstração de técnicas avançadas em simulação e otimização  
-**Linguagem**: C++17  
-**Paradigmas**: Orientação a objetos + Programação procedural  
-**Área de aplicação**: Engenharia Química / Métodos Numéricos / Otimização  
-**Nível**: Avançado (graduação final / pós-graduação)  
-**Tempo estimado de estudo**: 4-8 horas para compreensão completa
-
----
-
-*Este projeto demonstra a integração bem-sucedida entre teoria matemática avançada, implementação computacional eficiente e aplicação prática em engenharia.*
+**🎉 Desenvolvido com foco na qualidade científica e facilidade de uso!**

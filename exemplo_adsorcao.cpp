@@ -197,9 +197,12 @@ int main() {
     std::cout << "=== OTIMIZAÇÃO DE PARÂMETROS DE ADSORÇÃO ===" << std::endl;
     std::cout << "PDE: Difusão em partícula esférica com isoterma de Langmuir" << std::endl << std::endl;
     
+    // Criar diretório de resultados se não existir
+    system("mkdir -p Resultados");
+    
     // 1. Gerar dados experimentais sintéticos
     auto exp_data = generate_synthetic_data();
-    save_experimental_data(exp_data, "dados_experimentais.csv");
+    save_experimental_data(exp_data, "Resultados/dados_experimentais.csv");
     
     // 2. Configurar parâmetros iniciais para otimização
     AdsorptionParams initial_params = {
@@ -221,7 +224,7 @@ int main() {
     // 3. Executar simulação com parâmetros iniciais
     std::cout << "\n=== SIMULAÇÃO COM PARÂMETROS INICIAIS ===" << std::endl;
     auto initial_result = optimizer.simulate();
-    optimizer.save_results(initial_result, "simulacao_inicial.csv");
+    optimizer.save_results(initial_result, "Resultados/simulacao_inicial.csv");
     
     // 4. Configurar otimização
     std::vector<double> initial_guess = {5e-11, 50.0, 0.3, 5e-6}; // D_eff, k_L, q_max, k_f
@@ -237,7 +240,7 @@ int main() {
     std::cout << "\n=== SIMULAÇÃO COM PARÂMETROS OTIMIZADOS ===" << std::endl;
     optimizer.update_parameters(optimal_params);
     auto optimized_result = optimizer.simulate();
-    optimizer.save_results(optimized_result, "simulacao_otimizada.csv");
+    optimizer.save_results(optimized_result, "Resultados/simulacao_otimizada.csv");
     
     // 7. Mostrar resultados
     std::cout << "\n=== RESULTADOS DA OTIMIZAÇÃO ===" << std::endl;
@@ -251,7 +254,7 @@ int main() {
     std::cout << "Erro final (RMSE): " << final_error << std::endl;
     
     // 8. Salvar comparação
-    std::ofstream comparison("comparacao_resultados.csv");
+    std::ofstream comparison("Resultados/comparacao_resultados.csv");
     comparison << "# Comparação: Experimental vs Simulado Otimizado" << std::endl;
     comparison << "# Tempo(s), Uptake_Exp(kg/kg), Uptake_Sim(kg/kg), Erro_Abs" << std::endl;
     
@@ -276,7 +279,7 @@ int main() {
     }
     comparison.close();
     
-    std::cout << "\nArquivos gerados:" << std::endl;
+    std::cout << "\nArquivos gerados na pasta Resultados/:" << std::endl;
     std::cout << "  - dados_experimentais.csv" << std::endl;
     std::cout << "  - simulacao_inicial.csv" << std::endl;
     std::cout << "  - simulacao_otimizada.csv" << std::endl;
