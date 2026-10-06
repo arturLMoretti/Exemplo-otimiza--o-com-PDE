@@ -2,7 +2,7 @@
 
 > **Não há mais nada a manter aqui.** O código foi copiado para
 > **[`arturLMoretti/adsorptionKinectsAndEquilibriumModelling`](https://github.com/arturLMoretti/adsorptionKinectsAndEquilibriumModelling)**,
-> branch **`ccr-80b00589-jlbrwb`** (commit `942a857`), em `cpp/pde_particula/`.
+> branch **`master`** (commit `942a857`), em `cpp/pde_particula/`.
 > Os arquivos foram retirados deste branch para evitar duas fontes da verdade.
 
 ## O que havia aqui
@@ -40,5 +40,5 @@ está implementado e **validado** em Python no repositório consolidado
 * O histórico completo continua no git; o último commit com os arquivos é `cff9866`
   (`git checkout cff9866`). **Remover o repositório apaga esse histórico.**
 * Este repositório só tem o branch `master`.
-* O código consolidado está num **branch** (`ccr-80b00589-jlbrwb`) ainda **não** mesclado ao
-  `master` do repositório consolidado. Mescle (ou faça fork) antes de apagar qualquer coisa.
+* O código consolidado já está no **`master`** do repositório consolidado (mesclado em `942a857`); não há mais
+  nada pendente de mesclagem.
